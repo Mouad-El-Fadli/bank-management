@@ -9,7 +9,7 @@ class Compte extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['RIB', 'solde', 'client_id'];
+    protected $fillable = ['RIB', 'solde', 'client_id', 'statut', 'date_ouverture'];
 
     public function client()
     {

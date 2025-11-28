@@ -54,7 +54,7 @@
                                     @endif
                                 </td>
                                 <td class="fw-bold {{ $compte->solde >= 0 ? 'text-success' : 'text-danger' }}">
-                                    {{ number_format($compte->solde, 2, ',', ' ') }} €
+                                    {{ number_format($compte->solde, 2, ',', ' ') }} DH
                                 </td>
                                 <td>
                                     @if($compte->date_ouverture)

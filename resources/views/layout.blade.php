@@ -14,7 +14,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
+                <ul class="navbar-nav me-auto">
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('clients.index') }}">Clients</a>
                     </li>
@@ -22,8 +22,32 @@
                         <a class="nav-link" href="{{ route('comptes.index') }}">Comptes</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('virement.create') }}">Virements</a>
+                        <a class="nav-link" href="{{ route('virements.create') }}">Virements</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('developer') }}">Développeur</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ms-auto">
+                    @auth
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                {{ Auth::user()->name }}
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                <li>
+                                    <form action="{{ route('logout') }}" method="POST">
+                                        @csrf
+                                        <button type="submit" class="dropdown-item">Déconnexion</button>
+                                    </form>
+                                </li>
+                            </ul>
+                        </li>
+                    @else
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('login') }}">Connexion</a>
+                        </li>
+                    @endauth
                 </ul>
             </div>
         </div>

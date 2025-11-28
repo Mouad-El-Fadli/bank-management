@@ -12,4 +12,8 @@ class Client extends Model
     
     protected $fillable = ['nom', 'prenom', 'email', 'telephone', 'cin'];
 
+    public function comptes()
+    {
+        return $this->hasMany(Compte::class);
+    }
 }

@@ -22,6 +22,14 @@
             @endforeach
         </select>
     </div>
+    <div class="mb-3">
+        <label>Statut</label>
+        <select name="statut" class="form-control" required>
+            <option value="actif" {{ $compte->statut == 'actif' ? 'selected' : '' }}>Actif</option>
+            <option value="inactif" {{ $compte->statut == 'inactif' ? 'selected' : '' }}>Inactif</option>
+            <option value="bloque" {{ $compte->statut == 'bloque' ? 'selected' : '' }}>Bloqué</option>
+        </select>
+    </div>
     <button type="submit" class="btn btn-primary">Mettre à jour</button>
 </form>
 @endsection

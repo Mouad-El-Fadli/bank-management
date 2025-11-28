@@ -16,8 +16,8 @@ class VirementController extends Controller
 
     public function create()
     {
-        // Affiche le formulaire de virement
-        return view('virements.create');
+        $comptes = Compte::with('client')->get();
+        return view('virements.create', compact('comptes'));
     }
 
     public function store(Request $request)
@@ -55,12 +55,53 @@ class VirementController extends Controller
 
             DB::commit();
 
+            // Générer le PDF
+            $pdf = \Barryvdh\DomPDF\Facade\Pdf::loadView('virements.receipt', [
+                'source' => $compteSource,
+                'destination' => $compteDestinataire,
+                'montant' => $montant,
+                'date' => now()->format('d/m/Y H:i:s')
+            ]);
+
+            // Sauvegarder temporairement ou retourner le flux
+            // Pour simplifier, on redirige avec un lien de téléchargement en session ou on télécharge direct
+            // Mais comme c'est une requête POST, on ne peut pas télécharger direct et rediriger.
+            // On va stocker les infos en session pour le téléchargement.
+            
+            session()->put('last_virement', [
+                'source_id' => $compteSource->id,
+                'destination_id' => $compteDestinataire->id,
+                'montant' => $montant,
+                'date' => now()
+            ]);
+
             return redirect()->route('virements.index')
-                ->with('success', 'Virement effectué avec succès !');
+                ->with('success', 'Virement effectué avec succès !')
+                ->with('download_receipt', true);
 
         } catch (\Exception $e) {
             DB::rollBack();
-            return back()->withInput()->withErrors(['system' => 'Une erreur interne est survenue. Veuillez réessayer.']);
+            return back()->withInput()->withErrors(['system' => 'Une erreur interne est survenue: ' . $e->getMessage()]);
         }
+    }
+
+    public function downloadReceipt()
+    {
+        if (!session()->has('last_virement')) {
+            return redirect()->route('virements.index')->with('error', 'Aucun reçu disponible.');
+        }
+
+        $data = session('last_virement');
+        $source = Compte::with('client')->find($data['source_id']);
+        $destination = Compte::with('client')->find($data['destination_id']);
+
+        $pdf = \Barryvdh\DomPDF\Facade\Pdf::loadView('virements.receipt', [
+            'source' => $source,
+            'destination' => $destination,
+            'montant' => $data['montant'],
+            'date' => $data['date']->format('d/m/Y H:i:s')
+        ]);
+
+        return $pdf->download('recu_virement_' . time() . '.pdf');
     }
 }

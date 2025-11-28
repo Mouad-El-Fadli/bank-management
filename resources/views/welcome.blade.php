@@ -58,7 +58,20 @@
     box-shadow: 0 6px 25px rgba(255, 58, 130, 0.4);
     color: white;
 }
+#dev{
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    z-index: 1000;
+    margin-left:50% ;
+}
 </style>
-<nav>developer :yassine</nav>
+<nav id="dev">developer : Yassine and Mouad</nav>
 
 @endsection
