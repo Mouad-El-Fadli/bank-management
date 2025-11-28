@@ -123,6 +123,8 @@ el fad mouad 1
 
 boss yassine 2 
 
+othmane 3
+
 École Supérieure de Technologie de Salé - Filière Informatique
 
 Note pour l'évaluation : Le code respecte les conventions PSR-12 et utilise les mécanismes de protection contre les injections SQL via Eloquen
