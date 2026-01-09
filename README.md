@@ -121,7 +121,7 @@ Contributors :
 
 - [@Mouad-El-Fadli] (https://github.com/Mouad-El-Fadli)
 - [@BenOthman-BG] (https://github.com/BenOthman-BG)
-- [@yassinebld] (https://github.com/yassinebld)
+- 
 
 École Supérieure de Technologie de Salé - Filière Informatique
 
