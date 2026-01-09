@@ -1,121 +1,93 @@
-Application de Gestion de Comptes Bancaires (Laravel)
+# Gestion de Comptes Bancaires - Laravel
 
-Mini-Projet 2025/2026 - EST Salé (Université Mohammed V de Rabat)
+**Mini-Projet 2025/2026 – EST Salé (Université Mohammed V de Rabat)**
 
-Ce projet est une application web sécurisée développée avec le framework Laravel. Elle permet la gestion administrative de clients et de leurs comptes bancaires, ainsi que l'exécution de virements sécurisés.
+Application web sécurisée développée avec **Laravel**, permettant la gestion des clients, de leurs comptes bancaires, et l'exécution de **virements sécurisés**.
 
-📋 Contexte et Objectifs
+---
 
-L'objectif de ce projet est de mettre en pratique le développement web PHP orienté objet avec Laravel en respectant les standards de l'industrie (MVC, Sécurité, ORM).
+## 📋 Objectifs
 
-Fonctionnalités Principales
+- Mettre en pratique le développement web PHP orienté objet avec **Laravel**  
+- Respecter les standards de l'industrie : **MVC, ORM, sécurité**  
+- Créer une application fonctionnelle de gestion bancaire
 
-Gestion des Clients (CRUD) :
+---
 
-Ajout, modification, suppression et listage des clients.
+## ⚡ Fonctionnalités
 
-Données : Nom, Prénom, Email.
+### Gestion des Clients (CRUD)
+- Ajouter, modifier, supprimer et lister les clients  
+- Données : Nom, Prénom, Email
 
-Gestion des Comptes Bancaires (CRUD) :
+### Gestion des Comptes Bancaires (CRUD)
+- Un client peut avoir plusieurs comptes (**relation One-to-Many**)  
+- Données : RIB, Solde, Client associé
 
-Un client peut posséder plusieurs comptes (Relation One-to-Many).
+### Système de Virements
+- Transfert sécurisé entre deux comptes  
+- Utilisation de **transactions ACID** pour garantir l'intégrité des données  
+- Vérification des soldes et gestion des erreurs
 
-Données : RIB, Solde, Client associé.
+---
 
-Système de Virements :
+## 🛠️ Concepts Techniques
 
-Transfert d'argent entre deux comptes distincts.
+- **Architecture MVC** : Séparation Modèles / Vues / Contrôleurs  
+- **Eloquent ORM** : Gestion des relations et requêtes BDD  
+- **Sécurité** : CSRF, validation des formulaires (`$request->validate()`)  
+- **Design Patterns** :  
+  - Singleton & Factory via le conteneur de services Laravel  
+  - Observer pour les événements (logs, mises à jour automatiques)
 
-Utilisation de Transactions SGBD (ACID) pour garantir l'intégrité des données.
+---
 
-Vérification des soldes et gestion des erreurs.
+## 🚀 Installation
 
-🛠️ Concepts Techniques & Design Patterns
+**Prérequis** : PHP >= 8.1, Composer, MySQL
 
-Conformément au cahier des charges, ce projet implémente :
+1. **Cloner le projet**
 
-Architecture MVC : Séparation stricte des Modèles, Vues et Contrôleurs.
+git clone https://github.com/Mouad-El-Fadli/bank-management.git
+cd bank-management
 
-Eloquent ORM : Gestion des relations (hasMany, belongsTo) et des requêtes BDD.
-
-Sécurité : Protection CSRF sur tous les formulaires et validation stricte des données ($request->validate()).
-
-Design Patterns PHP :
-
-Singleton & Factory (via le conteneur de services Laravel).
-
-Observer (ex: mise à jour automatique ou logs lors d'événements).
-
-🚀 Guide d'Installation
-
-Prérequis : PHP >= 8.1, Composer, MySQL.
-
-Cloner le projet
-
-git clone [https://github.com/Mouad-El-Fadli/bank-management]
-cd nom-repo
-
-
-Installer les dépendances
+2. **Installer les dépendances**
 
 composer install
 npm install && npm run build
 
+3. **Configurer l'environnement**
+   
+cp .env.example .env
 
-Configuration de l'environnement
+**Modifier les paramètres de la base de données dans .env :**
 
-Dupliquer le fichier .env.example en .env.
+- DB_CONNECTION=mysql 
+- DB_HOST=127.0.0.1
+- DB_PORT=3306
+- DB_DATABASE=nom_de_votre_base
+- DB_USERNAME=root
+- DB_PASSWORD=
 
-Configurer la base de données dans .env :
-
-DB_CONNECTION=mysql
-DB_HOST=127.0.0.1
-DB_PORT=3306
-DB_DATABASE=nom_de_votre_base
-DB_USERNAME=root
-DB_PASSWORD=
-
-
-Générer la clé d'application
+4. **Générer la clé d'application**
 
 php artisan key:generate
 
 
-Migrations et Seeders (Jeux de données)
-
-Crée les tables (clients, comptes, etc.) et insère des fausses données pour tester.
+5. **Migrations et Seeders**
 
 php artisan migrate --seed
 
 
-Lancer le serveur
+6. **Lancer le serveur**
 
 php artisan serve
 
 
-Accédez à l'application sur : http://127.0.0.1:8000
+7. **Accéder à l'application :** http://127.0.0.1:8000
 
-📂 Structure de la Base de Données
 
-clients
 
-id (PK)
-
-nom (String)
-
-prenom (String)
-
-email (Unique)
-
-comptes
-
-id (PK)
-
-rib (String, Unique)
-
-solde (Decimal)
-
-client_id (FK -> clients)
 
 Contributors : 
 
