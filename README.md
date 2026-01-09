@@ -117,13 +117,11 @@ solde (Decimal)
 
 client_id (FK -> clients)
 
-📝 Auteurs
+Contributors : 
 
-el fad mouad 1
-
-boss yassine 2 
-
-othmane 3
+- [@Mouad-El-Fadli] (https://github.com/Mouad-El-Fadli)
+- [@BenOthman-BG] (https://github.com/BenOthman-BG)
+- [@yassinebld] (https://github.com/yassinebld)
 
 École Supérieure de Technologie de Salé - Filière Informatique
 
