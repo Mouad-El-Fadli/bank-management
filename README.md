@@ -120,7 +120,7 @@ client_id (FK -> clients)
 Contributors : 
 
 - [@Mouad-El-Fadli] (https://github.com/Mouad-El-Fadli)
-- [@BenOthman-BG] (https://github.com/BenOthman-BG)
+- [@BenOthman-BG] (https://github.com/BenOthman-BG) .
 - 
 
 École Supérieure de Technologie de Salé - Filière Informatique
